@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        #main{
+            width: 100%;
+            height: 450px;
+            margin: 50px auto;
+            background-color: #7c03a8;
+            overflow: hidden;
+        }
+        .main-slider{
+            position: relative;
+            width: 1190px;
+            min-width: 1190px;
+            height: 450px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .slider-pic{
+            position: relative;
+            width: 100%;
+            height: 450px;
+        }
+        .slider-pic > ul > li{
+            width: 100%;
+            height: 450px;
+            top: 0;
+            left: 0;
+        }
+        .slider-pic > ul > li > a{
+            position: relative;
+            width: 750px;
+            height: 450px;
+            top: 0;
+            left: 200px;
+        }
+        .slider-ctrl{
+            position: absolute;
+            width: 800px;
+            height: 40px;
+            bottom: 10px;
+            left: 174px;
+        }
+        .slider-ctrl > ul > li{
+            position: relative;
+            float: left;
+            width: 70px;
+            height: 40px;
+            margin-right: 1px;
+        }
+        .slider-ctrl > ul > li > span{
+            position: absolute;
+            width: 70px;
+            height: 40px;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            opacity: .3;
+            transition: all 300ms;
+        }
+        .slider-ctrl > ul > li > h4{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .slider-ctrl > ul > li > h4 > a{
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+        }
+        .slider-ctrl > ul > li > .slider-ctrl-dot{
+            position: absolute;
+            display: none;
+            width: 70px;
+            height: 4px;
+            text-align: center;
+            top: -4px;
+            left: 0;
+            transition: all 500ms;
+        }
+        .slider-ctrl > ul > li > .slider-ctrl-dot > i{
+            display: inline-block;
+            width: 8px;
+            height: 4px;
+            background-color: #fff;
+            vertical-align: top;
+        }
+        #main i.cur-yellow{
+            background-color: #ffaa00;
+        }
+        .slider-ctrl  li > .slider-ctrl-list{
+            position: absolute;
+            display: none;
+            width: 200px;
+            height: auto;
+            padding: 8px 10px 2px 13px;
+            bottom: 40px;
+            left: 0;
+            overflow: hidden;
+        }
+        .slider-ctrl > ul > li > .slider-ctrl-list > span{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            opacity: 0.65;
+            top: 0;
+            left: 0;
+        }
+        .slider-ctrl > ul > li > .slider-ctrl-list > a{
+            position: relative;
+            height: 18px;
+            margin-bottom: 6px;
+            color: #ddd;
+            overflow: hidden;
+        }
+        .slider-ctrl > ul > li > .slider-ctrl-list > a:hover{
+            color: #f60;
+        }
+        .slider-ctrl-list > a > i{
+            display: inline-block;
+            width: 8px;
+            height: 4px;
+            background-color: #fff;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .slider-ctrl-list > a > span{
+            vertical-align: middle;
+        }
+        .slider-ctrl  li:nth-child(10) > .slider-ctrl-list{
+            left: -153px;
+        }
+        .slider-ctrl  li:nth-child(11) > .slider-ctrl-list{
+            left: -153px;
+        }
+        .main-slider  .slider-btn{
+            position: absolute;
+            width: 30px;
+            height: 64px;
+            margin-top: -32px;
+            top: 50%;
+            background: url("img/index.png") no-repeat;
+            z-index: 20;
+            display: none;
+        }
+        .main-slider > a.slider-prev-btn{
+             left: 170px;
+             background-position: -82px -145px;
+         }
+        .main-slider > a.slider-next-btn{
+            right: 210px;
+            background-position: -120px -145px;
+        }
+        .main-slider > a.slider-prev-btn:hover{
+            background-position: -161px -145px;
+        }
+        .main-slider > a.slider-next-btn:hover{
+            background-position: -198px -145px;
+        }
+        #main:hover .slider-btn{
+            display: block;
+        }
+
+        /*动画效果*/
+        .slider-ctrl > ul > li.mouse-hover .slider-ctrl-list{
+            display: block;
+        }
+        .slider-ctrl > ul > li.mouse-hover .slider-ctrl-dot{
+            display: none;
+        }
+        .slider-ctrl > ul > li.mouse-hover > span {
+            opacity: 0.65;
+        }
+        .slider-ctrl > ul > li > span.cur{
+            height: 48px;
+            top: -8px;
+            opacity: 0.65;
+        }
+        .slider-ctrl > ul > li > .slider-ctrl-dot.cur{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="main">
+    <div class="main-slider">
+        <a href="javascript:;" class="slider-prev-btn slider-btn"></a>
+        <a href="javascript:;" class="slider-next-btn slider-btn"></a>
+        <div class="slider-pic">
+            <ul class="slider-pic1">
+                <li><a href=""><img src="img/1.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/2.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic2">
+                <li><a href=""><img src="img/3.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic3">
+                <li><a href=""><img src="img/4.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic4">
+                <li><a href=""><img src="img/5.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic5">
+                <li><a href=""><img src="img/6.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic6">
+                <li><a href=""><img src="img/7.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/8.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic7">
+                <li><a href=""><img src="img/9.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/10.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic8">
+                <li><a href=""><img src="img/11.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic9">
+                <li><a href=""><img src="img/12.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/13.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic10">
+                <li><a href=""><img src="img/14.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/15.jpg" alt=""></a></li>
+            </ul>
+            <ul class="slider-pic11">
+                <li><a href=""><img src="img/16.jpg" alt=""></a></li>
+                <li><a href=""><img src="img/17.jpg" alt=""></a></li>
+            </ul>
+        </div>
+        <div class="slider-ctrl">
+            <ul>
+                <li data-num="0" class="slider-ctrl-items">
+                    <span class="bg cur"></span>
+                    <h4><a href="">精选</a></h4>
+                    <div class="slider-ctrl-dot cur">
+                        <i class="cur-yellow"></i>
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>安全座椅98元秒杀</span>
+                        </a>
+                        <a href="" class="list-content">
+                            <i></i><span>西门子突破想象 不一样</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="2" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">服饰家装</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>服饰秋季新品五折起</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="3" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">母婴玩具</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>安全座椅3折起</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="4" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">办宁超市</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>九月酒日 9.9元起</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="5" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">美妆个护</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>换季buy面膜 联合100减50</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="6" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">手机通讯</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>百里挑一 选潮phone</span>
+                        </a>
+                        <a href="" class="list-content">
+                            <i></i><span>红米2A 499元现货购买</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="8" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">电脑数码</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>感念师恩 单反直降400</span>
+                        </a>
+                        <a href="" class="list-content">
+                            <i></i><span>苹果新品提前看</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="10" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">大家电</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>屏定天下 彩惠人生</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="11" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">厨卫小家电</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>小家电师恩难忘送20元券</span>
+                        </a>
+                        <a href="" class="list-content">
+                            <i></i><span>厨卫秋季家装节群英惠</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="13" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">海外购</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>开学“礼“2折起</span>
+                        </a>
+                        <a href="" class="list-content">
+                            <i></i><span>香港莎莎上线特惠</span>
+                        </a>
+                    </div>
+                </li>
+                <li data-num="15" class="slider-ctrl-items">
+                    <span class="bg"></span>
+                    <h4><a href="">办宁金融</a></h4>
+                    <div class="slider-ctrl-dot">
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <div class="slider-ctrl-list">
+                        <span class="bg"></span>
+                        <a href="" class="list-content">
+                            <i></i><span>1元众筹PPTV手机</span>
+                        </a>
+                        <a href="" class="list-content">
+                            <i></i><span>7.8%定期理财火热销售中</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/js2.js"></script>
+</body>
+</html>
